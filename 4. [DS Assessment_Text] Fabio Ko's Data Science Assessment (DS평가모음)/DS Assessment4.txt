@@ -1,0 +1,224 @@
+1. 암호가 tiger인 scott 계정의 Books, Customer, Orders 테이블을 BookStore.dmp 라는 파일이름으로 백업받으려 한다.  
+
+exp tiger/scott tables=Books,Customer,Orders files ='BookStore.dmp'
+
+
+2. 백업받은 BookStore.dmp 라는 파일을 이용해서 scott 계정의 Books, Customer 테이블등을 hr 계정으로 복구하려 한다. 
+
+imp userid=tiger/scott fromuser=bigdata touser=hr file='BookStore.dmp'
+
+
+3. SQL*Loader를 이용해서 HR계정의 데이터베이스에 iris 라는 테이블에 적재하라. 
+단, 테이블생성 스크립트와 control 파일의 스크립트를 제출한다.  
+
+OPTIONS(skip=1)
+load data infile '/home/centos/iris.csv'
+into table iris
+fields terminated by ','
+optionally enclosed by '"'
+trailing nullcols
+(SepalLength,SepalWidth,PetalLength,PetalWidth,Species)
+
+
+
+SQL*Loader: Release 11.2.0.2.0 - Production on 금 3월 29 16:51:24 2019
+
+Copyright (c) 1982, 2009, Oracle and/or its affiliates.  All rights reserved.
+
+Control File:   /home/centos/iris.ctl
+Data File:      /home/centos/iris.csv
+  Bad File:     /home/centos/iris.bad
+  Discard File:  none specified
+ 
+ (Allow all discards)
+
+Number to load: ALL
+Number to skip: 1
+Errors allowed: 50
+Bind array:     64 rows, maximum of 256000 bytes
+Continuation:    none specified
+Path used:      Conventional
+
+Table IRIS, loaded from every logical record.
+Insert option in effect for this table: INSERT
+TRAILING NULLCOLS option in effect
+
+   Column Name                  Position   Len  Term Encl Datatype
+------------------------------ ---------- ----- ---- ---- ---------------------
+SEPALLENGTH                         FIRST     *   ,  O(") CHARACTER            
+SEPALWIDTH                           NEXT     *   ,  O(") CHARACTER            
+PETALLENGTH                          NEXT     *   ,  O(") CHARACTER            
+PETALWIDTH                           NEXT     *   ,  O(") CHARACTER            
+SPECIES                              NEXT     *   ,  O(") CHARACTER            
+
+Record 51: Rejected - Error on table IRIS, column SPECIES.
+ORA-12899: value too large for column "HR"."IRIS"."SPECIES" (actual: 11, maximum: 10)
+
+Record 52: Rejected - Error on table IRIS, column SPECIES.
+ORA-12899: value too large for column "HR"."IRIS"."SPECIES" (actual: 11, maximum: 10)
+
+Record 53: Rejected - Error on table IRIS, column SPECIES.
+ORA-12899: value too large for column "HR"."IRIS"."SPECIES" (actual: 11, maximum: 10)
+
+Record 54: Rejected - Error on table IRIS, column SPECIES.
+ORA-12899: value too large for column "HR"."IRIS"."SPECIES" (actual: 11, maximum: 10)
+
+Record 55: Rejected - Error on table IRIS, column SPECIES.
+ORA-12899: value too large for column "HR"."IRIS"."SPECIES" (actual: 11, maximum: 10)
+
+Record 56: Rejected - Error on table IRIS, column SPECIES.
+ORA-12899: value too large for column "HR"."IRIS"."SPECIES" (actual: 11, maximum: 10)
+
+Record 57: Rejected - Error on table IRIS, column SPECIES.
+ORA-12899: value too large for column "HR"."IRIS"."SPECIES" (actual: 11, maximum: 10)
+
+Record 58: Rejected - Error on table IRIS, column SPECIES.
+ORA-12899: value too large for column "HR"."IRIS"."SPECIES" (actual: 11, maximum: 10)
+
+Record 59: Rejected - Error on table IRIS, column SPECIES.
+ORA-12899: value too large for column "HR"."IRIS"."SPECIES" (actual: 11, maximum: 10)
+
+Record 60: Rejected - Error on table IRIS, column SPECIES.
+ORA-12899: value too large for column "HR"."IRIS"."SPECIES" (actual: 11, maximum: 10)
+
+Record 61: Rejected - Error on table IRIS, column SPECIES.
+ORA-12899: value too large for column "HR"."IRIS"."SPECIES" (actual: 11, maximum: 10)
+
+Record 62: Rejected - Error on table IRIS, column SPECIES.
+ORA-12899: value too large for column "HR"."IRIS"."SPECIES" (actual: 11, maximum: 10)
+
+Record 63: Rejected - Error on table IRIS, column SPECIES.
+ORA-12899: value too large for column "HR"."IRIS"."SPECIES" (actual: 11, maximum: 10)
+
+Record 64: Rejected - Error on table IRIS, column SPECIES.
+ORA-12899: value too large for column "HR"."IRIS"."SPECIES" (actual: 11, maximum: 10)
+
+Record 65: Rejected - Error on table IRIS, column SPECIES.
+ORA-12899: value too large for column "HR"."IRIS"."SPECIES" (actual: 11, maximum: 10)
+
+Record 66: Rejected - Error on table IRIS, column SPECIES.
+ORA-12899: value too large for column "HR"."IRIS"."SPECIES" (actual: 11, maximum: 10)
+
+Record 67: Rejected - Error on table IRIS, column SPECIES.
+ORA-12899: value too large for column "HR"."IRIS"."SPECIES" (actual: 11, maximum: 10)
+
+Record 68: Rejected - Error on table IRIS, column SPECIES.
+ORA-12899: value too large for column "HR"."IRIS"."SPECIES" (actual: 11, maximum: 10)
+
+Record 69: Rejected - Error on table IRIS, column SPECIES.
+ORA-12899: value too large for column "HR"."IRIS"."SPECIES" (actual: 11, maximum: 10)
+
+Record 70: Rejected - Error on table IRIS, column SPECIES.
+ORA-12899: value too large for column "HR"."IRIS"."SPECIES" (actual: 11, maximum: 10)
+
+Record 71: Rejected - Error on table IRIS, column SPECIES.
+ORA-12899: value too large for column "HR"."IRIS"."SPECIES" (actual: 11, maximum: 10)
+
+Record 72: Rejected - Error on table IRIS, column SPECIES.
+ORA-12899: value too large for column "HR"."IRIS"."SPECIES" (actual: 11, maximum: 10)
+
+Record 73: Rejected - Error on table IRIS, column SPECIES.
+ORA-12899: value too large for column "HR"."IRIS"."SPECIES" (actual: 11, maximum: 10)
+
+Record 74: Rejected - Error on table IRIS, column SPECIES.
+ORA-12899: value too large for column "HR"."IRIS"."SPECIES" (actual: 11, maximum: 10)
+
+Record 75: Rejected - Error on table IRIS, column SPECIES.
+ORA-12899: value too large for column "HR"."IRIS"."SPECIES" (actual: 11, maximum: 10)
+
+Record 76: Rejected - Error on table IRIS, column SPECIES.
+ORA-12899: value too large for column "HR"."IRIS"."SPECIES" (actual: 11, maximum: 10)
+
+Record 77: Rejected - Error on table IRIS, column SPECIES.
+ORA-12899: value too large for column "HR"."IRIS"."SPECIES" (actual: 11, maximum: 10)
+
+Record 78: Rejected - Error on table IRIS, column SPECIES.
+ORA-12899: value too large for column "HR"."IRIS"."SPECIES" (actual: 11, maximum: 10)
+
+Record 79: Rejected - Error on table IRIS, column SPECIES.
+ORA-12899: value too large for column "HR"."IRIS"."SPECIES" (actual: 11, maximum: 10)
+
+Record 80: Rejected - Error on table IRIS, column SPECIES.
+ORA-12899: value too large for column "HR"."IRIS"."SPECIES" (actual: 11, maximum: 10)
+
+Record 81: Rejected - Error on table IRIS, column SPECIES.
+ORA-12899: value too large for column "HR"."IRIS"."SPECIES" (actual: 11, maximum: 10)
+
+Record 82: Rejected - Error on table IRIS, column SPECIES.
+ORA-12899: value too large for column "HR"."IRIS"."SPECIES" (actual: 11, maximum: 10)
+
+Record 83: Rejected - Error on table IRIS, column SPECIES.
+ORA-12899: value too large for column "HR"."IRIS"."SPECIES" (actual: 11, maximum: 10)
+
+Record 84: Rejected - Error on table IRIS, column SPECIES.
+ORA-12899: value too large for column "HR"."IRIS"."SPECIES" (actual: 11, maximum: 10)
+
+Record 85: Rejected - Error on table IRIS, column SPECIES.
+ORA-12899: value too large for column "HR"."IRIS"."SPECIES" (actual: 11, maximum: 10)
+
+Record 86: Rejected - Error on table IRIS, column SPECIES.
+ORA-12899: value too large for column "HR"."IRIS"."SPECIES" (actual: 11, maximum: 10)
+
+Record 87: Rejected - Error on table IRIS, column SPECIES.
+ORA-12899: value too large for column "HR"."IRIS"."SPECIES" (actual: 11, maximum: 10)
+
+Record 88: Rejected - Error on table IRIS, column SPECIES.
+ORA-12899: value too large for column "HR"."IRIS"."SPECIES" (actual: 11, maximum: 10)
+
+Record 89: Rejected - Error on table IRIS, column SPECIES.
+ORA-12899: value too large for column "HR"."IRIS"."SPECIES" (actual: 11, maximum: 10)
+
+Record 90: Rejected - Error on table IRIS, column SPECIES.
+ORA-12899: value too large for column "HR"."IRIS"."SPECIES" (actual: 11, maximum: 10)
+
+Record 91: Rejected - Error on table IRIS, column SPECIES.
+ORA-12899: value too large for column "HR"."IRIS"."SPECIES" (actual: 11, maximum: 10)
+
+Record 92: Rejected - Error on table IRIS, column SPECIES.
+ORA-12899: value too large for column "HR"."IRIS"."SPECIES" (actual: 11, maximum: 10)
+
+Record 93: Rejected - Error on table IRIS, column SPECIES.
+ORA-12899: value too large for column "HR"."IRIS"."SPECIES" (actual: 11, maximum: 10)
+
+Record 94: Rejected - Error on table IRIS, column SPECIES.
+ORA-12899: value too large for column "HR"."IRIS"."SPECIES" (actual: 11, maximum: 10)
+
+Record 95: Rejected - Error on table IRIS, column SPECIES.
+ORA-12899: value too large for column "HR"."IRIS"."SPECIES" (actual: 11, maximum: 10)
+
+Record 96: Rejected - Error on table IRIS, column SPECIES.
+ORA-12899: value too large for column "HR"."IRIS"."SPECIES" (actual: 11, maximum: 10)
+
+Record 97: Rejected - Error on table IRIS, column SPECIES.
+ORA-12899: value too large for column "HR"."IRIS"."SPECIES" (actual: 11, maximum: 10)
+
+Record 98: Rejected - Error on table IRIS, column SPECIES.
+ORA-12899: value too large for column "HR"."IRIS"."SPECIES" (actual: 11, maximum: 10)
+
+Record 99: Rejected - Error on table IRIS, column SPECIES.
+ORA-12899: value too large for column "HR"."IRIS"."SPECIES" (actual: 11, maximum: 10)
+
+Record 100: Rejected - Error on table IRIS, column SPECIES.
+ORA-12899: value too large for column "HR"."IRIS"."SPECIES" (actual: 11, maximum: 10)
+
+
+Table IRIS:
+  100 Rows successfully loaded.
+  50 Rows not loaded due to data errors.
+  0 Rows not loaded because all WHEN clauses were failed.
+  0 Rows not loaded because all fields were null.
+
+
+Space allocated for bind array:                  82560 bytes(64 rows)
+Read   buffer bytes: 1048576
+
+Total logical records skipped:          1
+Total logical records read:           150
+Total logical records rejected:        50
+Total logical records discarded:        0
+
+Run began on 금 3월  29 16:51:24 2019
+Run ended on 금 3월  29 16:51:32 2019
+
+Elapsed time was:     00:00:08.76
+CPU time was:         00:00:00.01

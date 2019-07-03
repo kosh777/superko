@@ -1,0 +1,115 @@
+# 1 번문제
+
+setwd('c:/Java/data')
+diet <- read.csv('diet.txt', header = T, sep = ' ')
+
+b <- diet$before
+a <- diet$after
+
+plot(b, a)
+
+cor(b, a)   # 0.9919807 => 매우강한 양의 상관관계가 있음
+
+
+
+
+
+# 2 번 문제
+
+women
+
+h <- women$height
+w <- women$weight
+
+plot(h, w)
+
+cor(h, w)   # 0.9954948 => 매우강한 양의 상관관계가 있음
+
+a) 상관계수 : 0.9954948
+
+
+
+m <- lm(h ~ w)
+summary(m)
+
+
+b) 결정계수 : 
+  Multiple R-squared:  0.991
+
+
+c) woman 데이터를 그래프로 나타내고 회귀직선을 작성하시오
+
+plot(h, w)
+
+m <- lm(w ~ h)
+abline(m, col='red')
+
+
+
+
+# 3 번 문제
+
+library(corrplot)
+library(car)
+library(leaps)
+
+library(MASS)
+state.x77
+
+plot(state.x77)
+
+cp <- cor(state.x77)
+corrplot.mixed(cp, upper = 'ellipse', lower = 'number')
+
+# 회귀계수
+
+state.x77 <- data.frame(state.x77)
+
+m <- lm(Population ~ ., data=state.x77)
+coef(m)
+
+
+# 회귀직선
+
+avPlots(m)
+
+
+# 다중회귀분석
+
+options(scipen = 100)
+summary(m)   # Multiple R-squared:  0.3798
+
+
+# 회귀모형 적합성 검정
+
+par(mfrow=c(2, 2))
+plot(m)
+par(mfrow=c(1, 1))
+
+
+# 다중공산성
+
+vif(m)
+
+
+m2 <- regsubsets(Population ~ ., data = state.x77, method = 'exhaustive')
+
+plot(m2, scale='adjr2')
+
+adjr2 = 0.28
+
+
+
+
+a) 변수소거법을 이용했을때 최적의 변수들은?
+  Income + Illiteracy + Life.Exp + Murder + HS.Grad + Frost + Area            
+
+
+b) 결정계수 R^2?
+  0.38
+
+
+c) 회귀모형의 적합성은?
+  
+  회귀모형의 적합성은 여전히 만족못함
+  이상치를 제거하는 등의 보완이 필요

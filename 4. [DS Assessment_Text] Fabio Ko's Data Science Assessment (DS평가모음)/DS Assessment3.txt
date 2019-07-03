@@ -1,0 +1,86 @@
+1. 사원emp들이 소속된 모든 부서deptno의 개수를 출력하는 함수를 작성하세요.  (15)
+     함수의 이름은 show_emp_dept_count 로 지정한다
+
+CREATE OR REPLACE FUNCTION 
+show_emp_dept_count(deptno DEPARTMENTS.DEPARTMENT_ID%type)
+	RETURN varchar2 
+IS
+	depno  show_emp_dept_count.%type;
+	
+BEGIN	
+	 SELECT count(DEPARTMENT_ID) FROM DEPARTMENTS;
+		 
+END;
+
+
+
+
+2. ‘JONES’라는 사원의 사번, 직급, 급여를 출력하는 프로시져를 작성하세요.  (15)
+     프로시져의 이름은 show_emp_jones 로 지정한다
+
+CREATE OR REPLACE FUNCTION 
+		show_emp_dept_count(name EMPLOYEES.LAST_NAME%TYPE, 
+							emid EMPLOYEES.EMPLOYEE_ID%TYPE,
+							deptnm DEPARTMENTS.DEPARTMENT_NAME%TYPE,
+							empsal EMPLOYEES.SALARY%type)
+	RETURN varchar2 
+IS
+BEGIN	
+	 SELECT last_name, employee_id,DEPARTMENT_NAME, SALARY 
+		FROM EMPLOYEES JOIN DEPARTMENTS USING (DEPARTMENT_ID)
+		WHERE name = 'Jones';
+	
+	RETURN name || '/' || emid || '/' || deptnm || '/' || empsal ;
+		 
+END;
+
+
+
+
+
+
+3. 사원들의 사번, 이름, 직책, 부서명, 위치를 조회하는 프로시져를 작성하세요  (15)
+     프로시져의 이름은 show_emp_dept 로 지정한다
+
+CREATE OR REPLACE FUNCTION show_emp_dept(emid EMPLOYEES.EMPLOYEE_ID%TYPE,
+										 depmg DEPARTMENTS.MANAGER_ID%TYPE,		
+                                         depnm DEPARTMENTS.DEPARTMENT_NAME%TYPE,   
+										 locaid LOCATIONS.LOCATION_ID%type)
+	RETURN varchar2 
+IS
+BEGIN	
+	 SELECT e.EMPLOYEE_ID, d.MANAGER_ID, d.DEPARTMENT_NAME, l.LOCATION_ID
+	 FROM EMPLOYEES e JOIN DEPARTMENTS d ON e.DEPARTMENT_ID = d.DEPARTMENT_ID
+	 JOIN LOCATIONS l ON d.LOCATION_ID = l.LOCATION_ID
+	 
+	 RETURN '사번' || '이름' || '직책' || '부서명' || '위치' ||;
+	 
+END;
+
+
+
+
+
+4. 국어kor, 영어eng, 수학mat 점수를 입력하면 총점tot, 평균mean, 학점grd을 반환하는 함수를 작성하세요.    (15)
+     함수이름은 new_sj_data 로 지정한다.
+
+CREATE OR REPLACE FUNCTION 
+		new_sj_data(kor new_sj_data.kor%TYPE, 
+				    eng new_sj_data.eng%TYPE, 
+				    mat new_sj_data.mat%type)
+	RETURN varchar2
+IS 
+	tot  new_sj_data.tot%TYPE;
+	mean new_sj_data.mean%TYPE;
+	grd  new_sj_data.grd%TYPE;
+	results varchar2(100);
+BEGIN
+	tot  := kor + eng + mat;
+	mean := tot / 3;
+	
+END CASE;
+	
+results := kor || eng || mat || tot || mean || grd;
+	
+	RETURN results;
+END;
